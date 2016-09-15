@@ -81,7 +81,7 @@ translug('如何安装 Laravel');
 **1.设置 api key 和 from**
 
 ```php
-use namespace JellyBool\Translug\Translug;
+use JellyBool\Translug\Translug;
 
 $translug = new Translug(['keyfrom'=>'your_key_from','key'=>'your_api_key']);
 // 或者也可以这样
