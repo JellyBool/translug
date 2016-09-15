@@ -1,0 +1,26 @@
+{
+    "name": "jellybool/translug",
+    "description": "Translate Chinese And Then Make It Sluggable",
+    "keywords": ["slug", "translate"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JellyBool",
+            "email": "jellybool@outlook.com"
+        }
+    ],
+    "require": {
+      "guzzlehttp/guzzle": "~5.3|~6.0"
+    },
+  "require-dev": {
+    "mockery/mockery": "0.9.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "JellyBool\\Translug\\": "src/"
+    },
+    "files": [
+      "src/helpers/functions.php"
+    ]
+  }
+}
