@@ -84,7 +84,7 @@ class Translation
             return $this->getTranslatedTextFromCollection($collection);
         }
 
-        throw new TranslationErrorException('Translate error, error_code : ' . $collection->get('errorCode'));
+        throw new TranslationErrorException('Translate error, error_code : ' . $collection->get('errorCode').'. Refer url: http://fanyi.youdao.com/openapi?path=data-mode');
     }
 
     /**
