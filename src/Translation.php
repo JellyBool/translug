@@ -17,7 +17,7 @@ class Translation
      * Youdao api url
      * @var string
      */
-    protected $api = 'http://fanyi.youdao.com/openapi.do?type=data&doctype=json&version=1.1';
+    protected $api = 'http://fanyi.youdao.com/openapi.do?type=data&doctype=json&version=1.1&';
     /**
      * @var Client
      */
@@ -108,7 +108,7 @@ class Translation
             $query = http_build_query($this->config);
             return $this->api . $query . '&q=' . $text;
         }
-        return $this->api . '&keyfrom=' . config('services.youdao.from') . '&key=' . config('services.youdao.key') . '&q=' . $text;
+        return $this->api . 'keyfrom=' . config('services.youdao.from') . '&key=' . config('services.youdao.key') . '&q=' . $text;
     }
 
     /**

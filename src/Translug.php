@@ -60,8 +60,6 @@ class Translug
      */
     private function sluggable($title, $separator = '-')
     {
-        $title = static::ascii($title);
-
         // Convert all dashes/underscores into separator
         $flip = $separator == '-' ? '_' : '-';
 
