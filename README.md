@@ -9,12 +9,12 @@
 ```bash
 composer require jellybool/translug
 ```
-或者在你的 composer.json 文件中添加:
+或者在你的 `composer.json` 文件中添加:
 
 ```json
 "jellybool/translug" : "~1.0"
 ```
-然后执行 composer update
+然后执行 `composer update`
 
 ## 初始化
 
@@ -47,7 +47,7 @@ http://fanyi.youdao.com/openapi?path=data-mode
     ],
 ```
 当然,你还需要在 `.env` 文件中添加:
-```
+```php
 YOUDAO_API_KEY=your_key
 YOUDAO_KEY_FROM=your_from
 ```
@@ -92,7 +92,6 @@ $translug->setConfig(['keyfrom'=>'your_key_from','key'=>'your_api_key']);
 **2.使用**
 
 ```php
-
 $translug->translate('如何安装 Laravel');
 //How to install the Laravel
 
