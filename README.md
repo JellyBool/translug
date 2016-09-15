@@ -74,6 +74,9 @@ app('translug')->translug('如何安装 Laravel'); // or Translug::translug('如
 
 translug('如何安装 Laravel');
 //how-to-install-the-laravel
+
+translug('怎么理解 laravel 关联模型');
+//how-to-understand-the-laravel-associated-model
 ```
 
 ### 在普通的项目使用
