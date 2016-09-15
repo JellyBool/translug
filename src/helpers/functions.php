@@ -8,7 +8,7 @@ if (! function_exists('translug')) {
      * @param  string|null $message
      * @return
      */
-    function translug($title)
+    function translug($title = '')
     {
         $translator = app('translug');
 

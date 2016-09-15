@@ -1,6 +1,7 @@
 <?php
 
 namespace JellyBool\Translug;
+
 use GuzzleHttp\Client;
 use JellyBool\Translug\Exceptions\TranslationErrorException;
 
@@ -11,16 +12,32 @@ use JellyBool\Translug\Exceptions\TranslationErrorException;
  */
 class Translation
 {
+
+    /**
+     * Youdao api url
+     * @var string
+     */
+    protected $api = 'http://fanyi.youdao.com/openapi.do?type=data&doctype=json&version=1.1';
+    /**
+     * @var Client
+     */
     protected $http;
+
+    /**
+     * @var array
+     */
+    protected $config = [];
 
     /**
      * Translation constructor.
      *
-     * @param $http
+     * @param Client $http
+     * @param array $config
      */
-    public function __construct(Client $http)
+    public function __construct(Client $http, array $config = [])
     {
         $this->http = $http;
+        $this->config = $config;
     }
 
     /**
@@ -38,9 +55,6 @@ class Translation
      */
     public function translug($text)
     {
-        if($this->isEnglish($text)) {
-            return str_slug($text);
-        }
         return str_slug($this->getTranslatedText($text));
     }
 
@@ -50,23 +64,27 @@ class Translation
      */
     private function getTranslatedText($text)
     {
-        $url = $this->getTranslateUrl($text);
-        $response =  $this->http->get($url);
+        if ($this->isEnglish($text)) {
+            return $text;
+        }
 
-        return  $this->checkTranlation(collect(\GuzzleHttp\json_decode($response->getBody(),true)));
+        $url = $this->getTranslateUrl($text);
+        $response = $this->http->get($url);
+
+        return $this->checkTranslation(collect(json_decode($response->getBody(), true)));
     }
 
     /**
      * @param $collection
      * @return mixed
      */
-    private function checkTranlation($collection)
+    private function checkTranslation($collection)
     {
-        if ($collection->get('errorCode') === 0 ) {
+        if ($collection->get('errorCode') === 0) {
             return $this->getTranslatedTextFromCollection($collection);
         }
 
-        throw new TranslationErrorException('Translate error, error_code : '.$collection->get('errorCode'));
+        throw new TranslationErrorException('Translate error, error_code : ' . $collection->get('errorCode'));
     }
 
     /**
@@ -86,7 +104,11 @@ class Translation
      */
     private function getTranslateUrl($text)
     {
-        return 'http://fanyi.youdao.com/openapi.do?keyfrom=laravist&key='.env('YOUDAO_API_KEY').'&type=data&doctype=json&version=1.1&q='.$text;
+        if (count($this->config) > 1) {
+            $query = http_build_query($this->config);
+            return $this->api . $query . '&q=' . $text;
+        }
+        return $this->api . '&keyfrom=' . config('services.youdao.from') . '&key=' . config('services.youdao.key') . '&q=' . $text;
     }
 
     /**
