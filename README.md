@@ -2,6 +2,9 @@
 
 >来源于 translate 和 slug 这两个词的组合,目的是实现文章和帖子中文标题也可以使用 slug 类型的 url 。
 
+## Demo
+Laravist 技术文档社区: https://laravist.com/discuss ,随便点开一个问答帖子就可以看效果。
+
 ## 安装
 
 这是一个标准的 Composer 的包,你可以直接通过下面的命令行来安装:
@@ -18,7 +21,7 @@ composer require jellybool/translug
 
 ## 初始化
 
-在 Translug 中,翻译的功能是直接使用有道翻譯 API ,你首先需要在这里注册你的网站或者 App:
+在 Translug 中,翻译的功能是直接使用有道翻译 API ,你首先需要在这里注册你的网站或者 App:
 
 http://fanyi.youdao.com/openapi?path=data-mode
 
