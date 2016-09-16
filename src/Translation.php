@@ -15,6 +15,7 @@ class Translation
 
     /**
      * Youdao api url
+     *
      * @var string
      */
     protected $api = 'http://fanyi.youdao.com/openapi.do?type=data&doctype=json&version=1.1&';
@@ -67,7 +68,7 @@ class Translation
         if ($this->isEnglish($text)) {
             return $text;
         }
-
+        $text = $this->removeSegment($text);
         $url = $this->getTranslateUrl($text);
         $response = $this->http->get($url);
 
@@ -84,7 +85,7 @@ class Translation
             return $this->getTranslatedTextFromCollection($collection);
         }
 
-        throw new TranslationErrorException('Translate error, error_code : ' . $collection->get('errorCode').'. Refer url: http://fanyi.youdao.com/openapi?path=data-mode');
+        throw new TranslationErrorException('Translate error, error_code : ' . $collection->get('errorCode') . '. Refer url: http://fanyi.youdao.com/openapi?path=data-mode');
     }
 
     /**
@@ -122,6 +123,17 @@ class Translation
         }
 
         return true;
+    }
+
+    /**
+     * Remove segment #
+     *
+     * @param $text
+     * @return mixed
+     */
+    private function removeSegment($text)
+    {
+        return str_replace('#', '', ltrim($text));
     }
 
 }
