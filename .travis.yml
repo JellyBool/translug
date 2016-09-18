@@ -7,4 +7,7 @@ php:
 
 before_script:
   - composer self-update
-  - composer require guzzlehttp/guzzle:~6.0
+  - composer install --prefer-source --no-suggest --dev
+
+matrix:
+  fast_finish: true
