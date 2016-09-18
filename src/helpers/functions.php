@@ -3,9 +3,10 @@
 if (!function_exists('translug')) {
 
     /**
-     * Post title to translug
+     * Post title to translug.
      *
-     * @param  string|null $title.
+     * @param string|null $title.
+     *
      * @return
      */
     function translug($title = '')

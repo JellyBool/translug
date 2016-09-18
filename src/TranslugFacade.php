@@ -1,4 +1,5 @@
 <?php
+
 namespace JellyBool\Translug;
 
 use Illuminate\Support\Facades\Facade;

@@ -6,11 +6,10 @@ use GuzzleHttp\Client;
 use JellyBool\Translug\Exceptions\TranslationErrorException;
 
 /**
- * Class Translation
+ * Class Translation.
  */
 class Translation
 {
-
     /**
      * Youdao api url.
      *
@@ -31,7 +30,7 @@ class Translation
      * Translation constructor.
      *
      * @param Client $http
-     * @param array $config
+     * @param array  $config
      */
     public function __construct(Client $http, array $config = [])
     {
@@ -87,7 +86,7 @@ class Translation
             return $this->getTranslatedTextFromResponse($translateResponse);
         }
 
-        throw new TranslationErrorException('Translate error, error_code : ' . $translateResponse['errorCode'] . '. Refer url: http://fanyi.youdao.com/openapi?path=data-mode');
+        throw new TranslationErrorException('Translate error, error_code : '.$translateResponse['errorCode'].'. Refer url: http://fanyi.youdao.com/openapi?path=data-mode');
     }
 
     /**
@@ -109,9 +108,11 @@ class Translation
     {
         if (count($this->config) > 1) {
             $query = http_build_query($this->config);
-            return $this->api . $query . '&q=' . $text;
+
+            return $this->api.$query.'&q='.$text;
         }
-        return $this->api . 'keyfrom=' . config('services.youdao.from') . '&key=' . config('services.youdao.key') . '&q=' . $text;
+
+        return $this->api.'keyfrom='.config('services.youdao.from').'&key='.config('services.youdao.key').'&q='.$text;
     }
 
     /**
