@@ -19,7 +19,7 @@ class TranslugTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('How to install Laravel',$translatedText);
     }
-    
+
     /** @test */
     public function it_test_the_english_title_slug_text()
     {
