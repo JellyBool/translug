@@ -72,31 +72,29 @@ class Translation
         $url = $this->getTranslateUrl($text);
         $response = $this->http->get($url);
 
-        return $this->checkTranslation(collect(json_decode($response->getBody(), true)));
+        return $this->getTranslation(json_decode($response->getBody(), true));
     }
 
     /**
-     * @param $collection
+     * @param array $translateResponse
      * @return mixed
      */
-    private function checkTranslation($collection)
+    private function getTranslation(array $translateResponse)
     {
-        if ($collection->get('errorCode') === 0) {
-            return $this->getTranslatedTextFromCollection($collection);
+        if ($translateResponse['errorCode'] === 0) {
+            return $this->getTranslatedTextFromResponse($translateResponse);
         }
 
-        throw new TranslationErrorException('Translate error, error_code : ' . $collection->get('errorCode') . '. Refer url: http://fanyi.youdao.com/openapi?path=data-mode');
+        throw new TranslationErrorException('Translate error, error_code : ' . $translateResponse['errorCode'] . '. Refer url: http://fanyi.youdao.com/openapi?path=data-mode');
     }
 
     /**
-     * @param $collection
+     * @param array $translateResponse
      * @return mixed
      */
-    private function getTranslatedTextFromCollection($collection)
+    private function getTranslatedTextFromResponse(array $translateResponse)
     {
-        $translations = $collection->get('translation');
-
-        return $translations[0];
+        return $translateResponse['translation'][0];
     }
 
     /**
