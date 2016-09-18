@@ -4,7 +4,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JellyBool/translug/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JellyBool/translug/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/JellyBool/translug/badges/build.png?b=master)](https://scrutinizer-ci.com/g/JellyBool/translug/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/JellyBool/translug/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/JellyBool/translug/?branch=master)
-[![Build Status](https://semaphoreci.com/api/v1/jellybool/translug/branches/master/badge.svg)](https://semaphoreci.com/jellybool/translug)
+[![StyleCI](https://styleci.io/repos/68300128/shield?branch=master)](https://styleci.io/repos/68300128)
 [![Total Downloads](https://poser.pugx.org/JellyBool/translug/downloads)](https://packagist.org/packages/JellyBool/translug)
 [![Latest Stable Version](https://poser.pugx.org/JellyBool/translug/version)](https://packagist.org/packages/JellyBool/translug)
 [![License](https://poser.pugx.org/JellyBool/translug/license)](https://packagist.org/packages/JellyBool/translug)
