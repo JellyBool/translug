@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/JellyBool/translug.svg?branch=master)](https://travis-ci.org/JellyBool/translug)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JellyBool/translug/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JellyBool/translug/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/JellyBool/translug/badges/build.png?b=master)](https://scrutinizer-ci.com/g/JellyBool/translug/build-status/master)
 [![Total Downloads](https://poser.pugx.org/JellyBool/translug/downloads)](https://packagist.org/packages/JellyBool/translug)
 [![Latest Stable Version](https://poser.pugx.org/JellyBool/translug/version)](https://packagist.org/packages/JellyBool/translug)
 [![License](https://poser.pugx.org/JellyBool/translug/license)](https://packagist.org/packages/JellyBool/translug)
