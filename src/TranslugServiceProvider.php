@@ -7,7 +7,6 @@ use Illuminate\Support\ServiceProvider;
 
 class TranslugServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
