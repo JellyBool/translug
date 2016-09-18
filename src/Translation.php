@@ -7,14 +7,12 @@ use JellyBool\Translug\Exceptions\TranslationErrorException;
 
 /**
  * Class Translation
- *
- * @package JellyBool\Translug
  */
 class Translation
 {
 
     /**
-     * Youdao api url
+     * Youdao api url.
      *
      * @var string
      */
@@ -43,6 +41,7 @@ class Translation
 
     /**
      * @param $text
+     *
      * @return mixed
      */
     public function translate($text)
@@ -52,6 +51,7 @@ class Translation
 
     /**
      * @param $text
+     *
      * @return string
      */
     public function translug($text)
@@ -61,6 +61,7 @@ class Translation
 
     /**
      * @param $text
+     *
      * @return mixed
      */
     private function getTranslatedText($text)
@@ -77,6 +78,7 @@ class Translation
 
     /**
      * @param array $translateResponse
+     *
      * @return mixed
      */
     private function getTranslation(array $translateResponse)
@@ -90,6 +92,7 @@ class Translation
 
     /**
      * @param array $translateResponse
+     *
      * @return mixed
      */
     private function getTranslatedTextFromResponse(array $translateResponse)
@@ -99,6 +102,7 @@ class Translation
 
     /**
      * @param $text
+     *
      * @return string
      */
     private function getTranslateUrl($text)
@@ -112,6 +116,7 @@ class Translation
 
     /**
      * @param $text
+     *
      * @return bool
      */
     private function isEnglish($text)
@@ -124,14 +129,14 @@ class Translation
     }
 
     /**
-     * Remove segment #
+     * Remove segment #.
      *
      * @param $text
+     *
      * @return mixed
      */
     private function removeSegment($text)
     {
         return str_replace('#', '', ltrim($text));
     }
-
 }

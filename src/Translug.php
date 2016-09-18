@@ -5,8 +5,6 @@ use GuzzleHttp\Client;
 
 /**
  * Class Translug
- *
- * @package JellyBool\Translug
  */
 class Translug
 {
@@ -43,6 +41,7 @@ class Translug
 
     /**
      * @param $text
+     *
      * @return mixed
      */
     public function translate($text)
@@ -54,6 +53,7 @@ class Translug
 
     /**
      * @param $text
+     *
      * @return string
      */
     public function translug($text)
@@ -64,6 +64,7 @@ class Translug
     /**
      * @param $title
      * @param string $separator
+     *
      * @return string
      */
     private function sluggable($title, $separator = '-')

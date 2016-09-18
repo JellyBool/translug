@@ -17,7 +17,7 @@ class TranslugTest extends PHPUnit_Framework_TestCase
     {
         $translatedText = $this->translator->translate('How to install Laravel');
 
-        $this->assertEquals('How to install Laravel',$translatedText);
+        $this->assertEquals('How to install Laravel', $translatedText);
     }
 
     /** @test */
@@ -25,7 +25,7 @@ class TranslugTest extends PHPUnit_Framework_TestCase
     {
         $slugText = $this->translator->translug('How to install Laravel');
 
-        $this->assertEquals('how-to-install-laravel',$slugText);
+        $this->assertEquals('how-to-install-laravel', $slugText);
     }
 
     /** @test */
@@ -33,7 +33,7 @@ class TranslugTest extends PHPUnit_Framework_TestCase
     {
         $tranlatedText = $this->translug->translate('How to install Laravel');
 
-        $this->assertEquals('How to install Laravel',$tranlatedText);
+        $this->assertEquals('How to install Laravel', $tranlatedText);
     }
 
     /** @test */
@@ -41,17 +41,15 @@ class TranslugTest extends PHPUnit_Framework_TestCase
     {
         $slugText = $this->translug->translug('How to install Laravel');
 
-        $this->assertEquals('how-to-install-laravel',$slugText);
+        $this->assertEquals('how-to-install-laravel', $slugText);
     }
 
     /** @test */
     public function it_test_the_slug_class_set_config()
     {
-        $config = ['key' => 1533000,'keyfrom' => 'laravist'];
+        $config = ['key' => 1533000, 'keyfrom' => 'laravist'];
         $this->translug->setConfig($config);
 
-        $this->assertEquals(['key' => 1533000,'keyfrom' => 'laravist'],$this->translug->getConfig());
+        $this->assertEquals(['key' => 1533000, 'keyfrom' => 'laravist'], $this->translug->getConfig());
     }
-
-
 }

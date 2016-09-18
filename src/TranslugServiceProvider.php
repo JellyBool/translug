@@ -14,6 +14,7 @@ class TranslugServiceProvider extends ServiceProvider
      * @var bool
      */
     protected $defer = false;
+
     /**
      * Bootstrap the application services.
      *
@@ -31,7 +32,7 @@ class TranslugServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('translug',function () {
+        $this->app->singleton('translug', function () {
             return new Translation(new Client());
         });
     }
