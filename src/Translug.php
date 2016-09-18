@@ -33,6 +33,9 @@ class Translug
         $this->config = $config;
     }
 
+    /**
+     * @return array
+     */
     public function getConfig()
     {
         return $this->config;

@@ -53,4 +53,13 @@ class TranslugTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(['key' => 1533000,'keyfrom' => 'laravist'],$this->translug->getConfig());
     }
 
+    /** @test */
+    public function it_test_the_traslation_class_set_config()
+    {
+        $config = ['key' => 1533030,'keyfrom' => 'jellybool'];
+        $this->translator->setConfig($config);
+
+        $this->assertEquals(['key' => 1533030,'keyfrom' => 'jellybool'],$this->translator->getConfig());
+    }
+
 }
