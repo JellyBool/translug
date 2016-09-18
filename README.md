@@ -1,5 +1,7 @@
 # Translug
 
+[![Build Status](https://travis-ci.org/JellyBool/translug.svg?branch=master)](https://travis-ci.org/JellyBool/translug)
+
 >来源于 translate 和 slug 这两个词的组合,目的是实现文章和帖子中文标题也可以使用 slug 类型的 url 。
 
 ## Demo
