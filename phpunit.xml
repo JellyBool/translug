@@ -15,4 +15,14 @@
             <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/</directory>
+            <exclude>
+                <directory suffix="ServiceProvider.php">src/</directory>
+                <directory suffix="Facade.php">src/</directory>
+                <directory>src/Exceptions</directory>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>

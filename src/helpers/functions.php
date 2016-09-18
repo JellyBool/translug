@@ -3,9 +3,9 @@
 if (! function_exists('translug')) {
 
     /**
-     * Arrange for a flash message.
+     * Post title to translug
      *
-     * @param  string|null $message
+     * @param  string|null $title
      * @return
      */
     function translug($title = '')
