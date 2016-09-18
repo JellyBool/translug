@@ -33,6 +33,11 @@ class Translug
         $this->config = $config;
     }
 
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
     /**
      * @param $text
      * @return mixed

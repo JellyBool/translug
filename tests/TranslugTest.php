@@ -44,4 +44,13 @@ class TranslugTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('how-to-install-laravel',$slugText);
     }
 
+    /** @test */
+    public function it_test_the_slug_class_set_config()
+    {
+        $config = ['key' => 1533000,'keyfrom' => 'laravist'];
+        $this->translug->setConfig($config);
+
+        $this->assertEquals(['key' => 1533000,'keyfrom' => 'laravist'],$this->translug->getConfig());
+    }
+
 }
