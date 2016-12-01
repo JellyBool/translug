@@ -76,10 +76,20 @@ YOUDAO_KEY_FROM=your_from
 
 **1.2 使用**
 ```php
-app('translug')->translate('如何安装 Laravel'); // or Translug::translate('如何安装 Laravel');
+app('translug')->translate('如何安装 Laravel'); 
 //How to install the Laravel
 
-app('translug')->translug('如何安装 Laravel'); // or Translug::translug('如何安装 Laravel');
+// or 
+use Translug;
+Translug::translate('如何安装 Laravel');
+//How to install the Laravel
+
+app('translug')->translug('如何安装 Laravel'); 
+//how-to-install-the-laravel
+
+// or 
+use Translug;
+Translug::translug('如何安装 Laravel');
 //how-to-install-the-laravel
 
 //或者你只想要 slug 的话
