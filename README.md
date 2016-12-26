@@ -12,7 +12,7 @@
 >来源于 translate 和 slug 这两个词的组合,目的是实现文章和帖子中文标题也可以使用 slug 类型的 url 。
 
 ## Demo
-Laravist 技术文档社区: https://laravist.com/discuss ,随便点开一个问答帖子就可以看效果。
+Laravel 技术问答社区: https://laravist.com/discuss ,随便点开一个问答帖子就可以看效果。
 
 ## 安装
 
