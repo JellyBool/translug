@@ -109,10 +109,10 @@ class Translation
         if (count($this->config) > 1) {
             $query = http_build_query($this->config);
 
-            return $this->api.$query.'&q='.$text;
+            return $this->api.$query.'&q='.urlencode($text);
         }
 
-        return $this->api.'keyfrom='.config('services.youdao.from').'&key='.config('services.youdao.key').'&q='.$text;
+        return $this->api.'keyfrom='.config('services.youdao.from').'&key='.config('services.youdao.key').'&q='.urlencode($text);
     }
 
     /**
