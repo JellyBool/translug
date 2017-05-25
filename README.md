@@ -32,19 +32,27 @@ composer require jellybool/translug
 
 在 Translug 中,翻译的功能是直接使用有道翻译 API ,你首先需要在这里注册你的网站或者 App:
 
-http://fanyi.youdao.com/openapi?path=data-mode
+* ~~http://fanyi.youdao.com/openapi?path=data-mode~~        旧版接口, 有道不再支持
+* http://ai.youdao.com/docs/api.s
 
-> 不用担心,非常简单! 有道翻译的免费接口限制为每小时最多 1000 次请求,如果需要更多 API 调用,请联系有道官方。
+
+> 不用担心,非常简单! 有道翻译的免费接口限制为~~每小时最多 1000 次请求~~每天有十万免费字符,如果需要更多 API 调用,请联系有道官方。
 
 注册之后,你会拿到两个关键的信息:
 ```
 1. api key
 2. key from
 ```
+**新的接口注册后会拿到两个关键信息**
+```
+1. app key
+2. app secret
+```
 
 ### 1.Laravel 中使用
 **1.1 配置**
 默认情况在,在 laravel 项目中的 `config/services.php` 中添加:
+**所有配置中新版本与旧版本配置一种就行, 两种配置都有的情况下使用新版接口**
 
 ```php
   'stripe' => [
@@ -52,16 +60,20 @@ http://fanyi.youdao.com/openapi?path=data-mode
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-   // 下面是你添加的内容
+   // 下面是你添加的内容,
   'youdao' => [
-        'key' => env('YOUDAO_API_KEY'),
-        'from' => env('YOUDAO_KEY_FROM'),
+        'key' => env('YOUDAO_API_KEY'),             //旧版的API的配置
+        'from' => env('YOUDAO_KEY_FROM'),           //旧版的API的配置
+        'appKey' => env('YOUDAO_APP_KEY'),          //新版的AIP配置
+        'appSecret' => env('YOUDAO_APP_SECRET'),    //新版的AIP配置
     ],
 ```
 当然,你还需要在 `.env` 文件中添加:
 ```php
-YOUDAO_API_KEY=your_key
-YOUDAO_KEY_FROM=your_from
+YOUDAO_API_KEY=your_key             //旧版API的配置
+YOUDAO_KEY_FROM=your_from           //旧版API的配置
+YOUDAO_APP_KEY=your_app_key         //新版API的配置
+YOUDAO_APP_SECRET=your_app_secret   //新版API的配置
 ```
 
 在 `config/app.php` 中,添加 `provider` 和 `aliases` :
@@ -76,18 +88,18 @@ YOUDAO_KEY_FROM=your_from
 
 **1.2 使用**
 ```php
-app('translug')->translate('如何安装 Laravel'); 
+app('translug')->translate('如何安装 Laravel');
 //How to install the Laravel
 
-// or 
+// or
 use Translug;
 Translug::translate('如何安装 Laravel');
 //How to install the Laravel
 
-app('translug')->translug('如何安装 Laravel'); 
+app('translug')->translug('如何安装 Laravel');
 //how-to-install-the-laravel
 
-// or 
+// or
 use Translug;
 Translug::translug('如何安装 Laravel');
 //how-to-install-the-laravel

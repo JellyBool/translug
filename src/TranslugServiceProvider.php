@@ -32,7 +32,19 @@ class TranslugServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('translug', function () {
-            return new Translation(new Client());
+            if (!empty(config('services.youdao.appKey'))) {
+                $config = [
+                    'appKey' => config('services.youdao.appKey'),
+                    'appSecret' => config('services.youdao.appSecret')
+                ];
+            } else {
+                $config = [
+                    'keyfrom' => config('services.youdao.from'),
+                    'key' => config('services.youdao.key')
+                ];
+            }
+
+            return new Translation(new Client(), $config);
         });
     }
 }
