@@ -32,7 +32,7 @@ class TranslugServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('translug', function () {
-            return new Translation(new Client());
+            return new Translation(new Client(), config('services.youdao'));
         });
     }
 }

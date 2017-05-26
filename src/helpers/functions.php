@@ -3,18 +3,18 @@
 if (!function_exists('translug')) {
 
     /**
-     * Post title to translug.
+     * Text to translug.
      *
-     * @param string|null $title.
+     * @param string|null $text.
      *
      * @return
      */
-    function translug($title = '')
+    function translug($text = '')
     {
         $translator = app('translug');
 
-        if (!is_null($title)) {
-            return $translator->translug($title);
+        if (!is_null($text)) {
+            return $translator->translug($text);
         }
 
         return $translator;

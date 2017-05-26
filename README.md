@@ -14,6 +14,12 @@
 ## Demo
 Laravel 技术问答社区: https://laravist.com/discuss ,随便点开一个问答帖子就可以看效果。
 
+## 使用前必看
+
+由于有道翻译服务全面升级：http://fanyi.youdao.com/openapi?path=data-mode
+
+敬请使用过老版本的用户尽快升级 Translug 2.0 以上。
+
 ## 安装
 
 这是一个标准的 Composer 的包,你可以直接通过下面的命令行来安装:
@@ -24,7 +30,7 @@ composer require jellybool/translug
 或者在你的 `composer.json` 文件中添加:
 
 ```json
-"jellybool/translug" : "~1.0"
+"jellybool/translug" : "~2.0"
 ```
 然后执行 `composer update`
 
@@ -32,14 +38,14 @@ composer require jellybool/translug
 
 在 Translug 中,翻译的功能是直接使用有道翻译 API ,你首先需要在这里注册你的网站或者 App:
 
-http://fanyi.youdao.com/openapi?path=data-mode
+http://ai.youdao.com/docs/api.s
 
 > 不用担心,非常简单! 有道翻译的免费接口限制为每小时最多 1000 次请求,如果需要更多 API 调用,请联系有道官方。
 
-注册之后,你会拿到两个关键的信息:
+注册之后，需要创建一个应用，然后你会拿到两个关键的信息:
 ```
-1. api key
-2. key from
+1. qppKey
+2. appSecret
 ```
 
 ### 1.Laravel 中使用
@@ -53,16 +59,24 @@ http://fanyi.youdao.com/openapi?path=data-mode
         'secret' => env('STRIPE_SECRET'),
     ],
    // 下面是你添加的内容
-  'youdao' => [
+   'youdao' => [
+           'appKey' => env('YOUDAO_APP_KEY'),
+           'appSecret' => env('YOUDAO_APP_SECRET'),
+       ],
+       
+/*  如果你是从 translug:~1.0 升级的话，需要把下面的配置修改成上面的
+'youdao' => [
         'key' => env('YOUDAO_API_KEY'),
         'from' => env('YOUDAO_KEY_FROM'),
     ],
+ */   
 ```
 当然,你还需要在 `.env` 文件中添加:
 ```php
-YOUDAO_API_KEY=your_key
-YOUDAO_KEY_FROM=your_from
+YOUDAO_APP_KEY=app_key
+YOUDAO_APP_SECRET=app_secret
 ```
+> `translug:~1.0` 升级的话，也要对应修改这里的 `.env` 变量 
 
 在 `config/app.php` 中,添加 `provider` 和 `aliases` :
 
@@ -107,15 +121,15 @@ translug('怎麼理解 laravel 關聯模型');
 
 ### 2.在普通的项目使用
 
-**2.1 设置 api key 和 from**
+**2.1 设置 appKey 和 appSecret**
 
 ```php
 use JellyBool\Translug\Translug;
 
-$translug = new Translug(['keyfrom'=>'your_key_from','key'=>'your_api_key']);
+$translug = new Translug(['appKey'=>'your_key_from','appSerect'=>'your_api_key']);
 // 或者也可以这样
 $translug = new Translug();
-$translug->setConfig(['keyfrom'=>'your_key_from','key'=>'your_api_key']);
+$translug->setConfig('appKey'=>'your_key_from','appSerect'=>'your_api_key']);
 ```
 
 **2.2 使用**

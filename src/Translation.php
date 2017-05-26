@@ -11,11 +11,11 @@ use JellyBool\Translug\Exceptions\TranslationErrorException;
 class Translation
 {
     /**
-     * Youdao api url.
+     * Youdao new API url
      *
      * @var string
      */
-    protected $api = 'http://fanyi.youdao.com/openapi.do?type=data&doctype=json&version=1.1&';
+    protected $api = 'https://openapi.youdao.com/api?from=zh-CHS&to=EN&';
     /**
      * @var Client
      */
@@ -30,7 +30,7 @@ class Translation
      * Translation constructor.
      *
      * @param Client $http
-     * @param array  $config
+     * @param array $config
      */
     public function __construct(Client $http, array $config = [])
     {
@@ -65,7 +65,7 @@ class Translation
      */
     private function getTranslatedText($text)
     {
-        if ($this->isEnglish($text)) {
+        if ( $this->isEnglish($text) ) {
             return $text;
         }
         $text = $this->removeSegment($text);
@@ -82,11 +82,10 @@ class Translation
      */
     private function getTranslation(array $translateResponse)
     {
-        if ($translateResponse['errorCode'] === 0) {
+        if ((int) $translateResponse['errorCode'] === 0 ) {
             return $this->getTranslatedTextFromResponse($translateResponse);
         }
-
-        throw new TranslationErrorException('Translate error, error_code : '.$translateResponse['errorCode'].'. Refer url: http://fanyi.youdao.com/openapi?path=data-mode');
+        throw new TranslationErrorException('Translate error, error_code : ' . $translateResponse['errorCode'] . '. Refer url: http://ai.youdao.com/docs/api.s');
     }
 
     /**
@@ -106,15 +105,15 @@ class Translation
      */
     private function getTranslateUrl($text)
     {
-        if (count($this->config) > 1) {
-            $query = http_build_query($this->config);
+        $salt = md5(time());
+        $query = [
+            'sign'   => md5($this->config['appKey'] . $text . $salt . $this->config['appSecret']),
+            'appKey' => $this->config['appKey'],
+            'salt'   => $salt
+        ];
 
-            return $this->api.$query.'&q='.urlencode($text);
-        }
-
-        return $this->api.'keyfrom='.config('services.youdao.from').'&key='.config('services.youdao.key').'&q='.urlencode($text);
+        return $this->api . http_build_query($query) . '&q=' . urlencode($text);
     }
-
     /**
      * @param $text
      *
@@ -122,7 +121,7 @@ class Translation
      */
     private function isEnglish($text)
     {
-        if (preg_match("/\p{Han}+/u", $text)) {
+        if ( preg_match("/\p{Han}+/u", $text) ) {
             return false;
         }
 
@@ -140,4 +139,5 @@ class Translation
     {
         return str_replace('#', '', ltrim($text));
     }
+
 }
