@@ -16,6 +16,13 @@ class Translation
      * @var string
      */
     protected $api = 'http://fanyi.youdao.com/openapi.do?type=data&doctype=json&version=1.1&';
+
+    /**
+     * ai.youdao.com api url
+     * @var string
+     */
+    protected $api_v2 = 'http://openapi.youdao.com/api?from=zh-CHS&to=EN&';
+
     /**
      * @var Client
      */
@@ -68,8 +75,11 @@ class Translation
         if ($this->isEnglish($text)) {
             return $text;
         }
+
+        $method = !empty($this->config['keyfrom']) ? 'getTranslateUrl' : 'getTranslateUrlV2';
+
         $text = $this->removeSegment($text);
-        $url = $this->getTranslateUrl($text);
+        $url = $this->$method($text);
         $response = $this->http->get($url);
 
         return $this->getTranslation(json_decode($response->getBody(), true));
@@ -82,7 +92,7 @@ class Translation
      */
     private function getTranslation(array $translateResponse)
     {
-        if ($translateResponse['errorCode'] === 0) {
+        if ($translateResponse['errorCode'] == 0) {
             return $this->getTranslatedTextFromResponse($translateResponse);
         }
 
@@ -106,13 +116,27 @@ class Translation
      */
     private function getTranslateUrl($text)
     {
-        if (count($this->config) > 1) {
-            $query = http_build_query($this->config);
+        $query = http_build_query($this->config);
 
-            return $this->api.$query.'&q='.urlencode($text);
-        }
+        return $this->api.$query.'&q='.urlencode($text);
+    }
 
-        return $this->api.'keyfrom='.config('services.youdao.from').'&key='.config('services.youdao.key').'&q='.urlencode($text);
+    /**
+     * @param $text
+     *
+     * @return string
+     */
+    private function getTranslateUrlV2($text)
+    {
+        $key = $this->config['appKey'];
+        $secret = $this->config['appSecret'];
+
+        $salt = md5(time());
+        $sign = md5($key . $text . $salt . $secret);
+
+        $query = http_build_query(['salt' => $salt, 'sign' => $sign, 'appKey' => $key]);
+
+        return $this->api_v2.$query.'&q='.urlencode($text);
     }
 
     /**
