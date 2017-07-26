@@ -25,5 +25,15 @@
     "files": [
       "src/helpers/functions.php"
     ]
+  },
+  "extra": {
+      "laravel": {
+        "providers": [
+            "\\JellyBool\\Translug\\TranslugServiceProvider"
+        ],
+        "aliases": [
+            "\\JellyBool\\Translug\\TranslugFacade"
+        ]
+      }
   }
 }
