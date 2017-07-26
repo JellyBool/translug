@@ -9,10 +9,10 @@
 [![Latest Stable Version](https://poser.pugx.org/JellyBool/translug/version)](https://packagist.org/packages/JellyBool/translug)
 [![License](https://poser.pugx.org/JellyBool/translug/license)](https://packagist.org/packages/JellyBool/translug)
 
->来源于 translate 和 slug 这两个词的组合,目的是实现文章和帖子中文标题也可以使用 slug 类型的 url 。
+> 来源于 translate 和 slug 这两个词的组合,目的是实现文章和帖子中文标题也可以使用 slug 类型的 url 。
 
 ## Demo
-Laravel 技术问答社区: https://laravist.com/discuss ,随便点开一个问答帖子就可以看效果。
+CODECASTS 视频学习社区: https://www.codecasts.com/discuss ,随便点开一个问答帖子就可以看效果。
 
 ## 使用前必看
 
@@ -44,7 +44,7 @@ http://ai.youdao.com/docs/api.s
 
 注册之后，需要创建一个应用，然后你会拿到两个关键的信息:
 ```
-1. qppKey
+1. appKey
 2. appSecret
 ```
 
@@ -72,6 +72,7 @@ http://ai.youdao.com/docs/api.s
  */   
 ```
 当然,你还需要在 `.env` 文件中添加:
+
 ```php
 YOUDAO_APP_KEY=app_key
 YOUDAO_APP_SECRET=app_secret
@@ -81,7 +82,7 @@ YOUDAO_APP_SECRET=app_secret
 在 `config/app.php` 中,添加 `provider` 和 `aliases` :
 
 ```php
- //provider
+ //providers
  \JellyBool\Translug\TranslugServiceProvider::class,
 
 // aliases
@@ -126,10 +127,10 @@ translug('怎麼理解 laravel 關聯模型');
 ```php
 use JellyBool\Translug\Translug;
 
-$translug = new Translug(['appKey'=>'your_key_from','appSerect'=>'your_api_key']);
+$translug = new Translug(['appKey' => 'your_key_from', 'appSerect' => 'your_api_key' ]);
 // 或者也可以这样
 $translug = new Translug();
-$translug->setConfig('appKey'=>'your_key_from','appSerect'=>'your_api_key']);
+$translug->setConfig('appKey' => 'your_key_from', 'appSerect' => 'your_api_key']);
 ```
 
 **2.2 使用**
