@@ -11,7 +11,7 @@ use JellyBool\Translug\Exceptions\TranslationErrorException;
 class Translation
 {
     /**
-     * Youdao new API url
+     * Youdao new API url.
      *
      * @var string
      */
@@ -30,7 +30,7 @@ class Translation
      * Translation constructor.
      *
      * @param Client $http
-     * @param array $config
+     * @param array  $config
      */
     public function __construct(Client $http, array $config = [])
     {
@@ -65,7 +65,7 @@ class Translation
      */
     private function getTranslatedText($text)
     {
-        if ( $this->isEnglish($text) ) {
+        if ($this->isEnglish($text)) {
             return $text;
         }
         $text = $this->removeSegment($text);
@@ -82,10 +82,10 @@ class Translation
      */
     private function getTranslation(array $translateResponse)
     {
-        if ((int) $translateResponse['errorCode'] === 0 ) {
+        if ((int) $translateResponse['errorCode'] === 0) {
             return $this->getTranslatedTextFromResponse($translateResponse);
         }
-        throw new TranslationErrorException('Translate error, error_code : ' . $translateResponse['errorCode'] . '. Refer url: http://ai.youdao.com/docs/api.s');
+        throw new TranslationErrorException('Translate error, error_code : '.$translateResponse['errorCode'].'. Refer url: http://ai.youdao.com/docs/api.s');
     }
 
     /**
@@ -107,13 +107,14 @@ class Translation
     {
         $salt = md5(time());
         $query = [
-            'sign'   => md5($this->config['appKey'] . $text . $salt . $this->config['appSecret']),
+            'sign'   => md5($this->config['appKey'].$text.$salt.$this->config['appSecret']),
             'appKey' => $this->config['appKey'],
-            'salt'   => $salt
+            'salt'   => $salt,
         ];
 
-        return $this->api . http_build_query($query) . '&q=' . urlencode($text);
+        return $this->api.http_build_query($query).'&q='.urlencode($text);
     }
+
     /**
      * @param $text
      *
@@ -121,7 +122,7 @@ class Translation
      */
     private function isEnglish($text)
     {
-        if ( preg_match("/\p{Han}+/u", $text) ) {
+        if (preg_match("/\p{Han}+/u", $text)) {
             return false;
         }
 
@@ -139,5 +140,4 @@ class Translation
     {
         return str_replace('#', '', ltrim($text));
     }
-
 }
