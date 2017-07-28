@@ -31,9 +31,9 @@
         "providers": [
             "\\JellyBool\\Translug\\TranslugServiceProvider"
         ],
-        "aliases": [
-            "\\JellyBool\\Translug\\TranslugFacade"
-        ]
+        "aliases": {
+           "Translug": "\\JellyBool\\Translug\\TranslugFacade"
+        }
       }
   }
 }
