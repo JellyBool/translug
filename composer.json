@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": "^7.2",
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "illuminate/support": "6.*|7.*"
     },
