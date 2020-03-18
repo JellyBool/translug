@@ -1,7 +1,10 @@
 {
     "name": "jellybool/translug",
     "description": "Translate Chinese And Then Make It Sluggable",
-    "keywords": ["slug", "translate"],
+    "keywords": [
+        "slug",
+        "translate"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -10,30 +13,31 @@
         }
     ],
     "require": {
-      "php": ">=5.5.9",
-      "guzzlehttp/guzzle": "~5.3|~6.0"
+        "php": ">=5.5.9",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "illuminate/support": "6.*|7.*"
     },
-  "require-dev": {
-    "phpunit/phpunit": "^4.0",
-    "illuminate/support": "^5.2"
-  },
-  "minimum-stability" : "dev",
-  "autoload": {
-    "psr-4": {
-      "JellyBool\\Translug\\": "src/"
+    "require-dev": {
+        "phpunit/phpunit": "^7.5.15|^8.4|^9.0"
     },
-    "files": [
-      "src/helpers/functions.php"
-    ]
-  },
-  "extra": {
-      "laravel": {
-        "providers": [
-            "\\JellyBool\\Translug\\TranslugServiceProvider"
-        ],
-        "aliases": {
-           "Translug": "\\JellyBool\\Translug\\TranslugFacade"
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "JellyBool\\Translug\\": "src/"
+        },
+        "files": [
+            "src/helpers/functions.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "\\JellyBool\\Translug\\TranslugServiceProvider"
+            ],
+            "aliases": {
+                "Translug": "\\JellyBool\\Translug\\TranslugFacade"
+            }
         }
-      }
-  }
+    }
 }

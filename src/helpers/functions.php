@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Str;
+
 if (!function_exists('translug')) {
 
     /**
@@ -18,5 +20,20 @@ if (!function_exists('translug')) {
         }
 
         return $translator;
+    }
+}
+
+if (!function_exists('str_slug')) {
+
+    /**
+     * Text to translug.
+     *
+     * @param string|null $text.
+     *
+     * @return
+     */
+    function str_slug($text = '')
+    {
+        return Str::slug($text);
     }
 }
