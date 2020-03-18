@@ -1,12 +1,14 @@
 <?php
 
-class TranslugTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class TranslugTest extends TestCase
 {
     protected $translug;
 
     protected $translator;
 
-    public function setUp()
+    protected function setUp() : void
     {
         $this->translator = new \JellyBool\Translug\Translation(new \GuzzleHttp\Client());
         $this->translug = new JellyBool\Translug\Translug();
