@@ -85,6 +85,7 @@ class Translation
         if ((int) $translateResponse['errorCode'] === 0) {
             return $this->getTranslatedTextFromResponse($translateResponse);
         }
+
         throw new TranslationErrorException('Translate error, error_code : '.$translateResponse['errorCode'].'. Refer url: http://ai.youdao.com/docs/api.s');
     }
 
