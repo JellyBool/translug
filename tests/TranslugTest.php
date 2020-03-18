@@ -8,7 +8,7 @@ class TranslugTest extends TestCase
 
     protected $translator;
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->translator = new \JellyBool\Translug\Translation(new \GuzzleHttp\Client());
         $this->translug = new JellyBool\Translug\Translug();
