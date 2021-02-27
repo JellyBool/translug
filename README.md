@@ -20,6 +20,14 @@ CODECASTS 视频学习社区: https://www.codecasts.com/discuss ,随便点开一
 
 敬请使用过老版本的用户尽快升级 Translug 2.0 以上。
 
+对应的版本说明：
+
+| Laravel  | Translu |
+| ------------- | ------------- |
+| 5.*  | ~1.0  |
+| 6.* or 7.*  | ~2.0  |
+| 8.*  | ~3.0  |
+
 ## 安装
 
 这是一个标准的 Composer 的包,你可以直接通过下面的命令行来安装:
@@ -30,7 +38,7 @@ composer require jellybool/translug
 或者在你的 `composer.json` 文件中添加:
 
 ```json
-"jellybool/translug" : "~2.0"
+"jellybool/translug" : "~3.0"
 ```
 然后执行 `composer update`
 
